@@ -16,11 +16,17 @@
    <script>
     window.onload = function() {
       var video = document.getElementById('sourcevid');
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
       if (navigator.getUserMedia) {
           navigator.getUserMedia('video', successCallback, errorCallback);
           function successCallback(stream) {
-              video.src = stream;
-              console.log('video stream success!');
+	      if(window.webkitURL){
+		   video.src = window.webkitURL.createObjectURL(stream);
+		   console.log('video stream for Chrome success!');
+	      }else{
+		   video.src = stream;
+		   console.log('video stream for Opera12 success!');
+	      }	
           }
           function errorCallback(error) {
               console.error('An error occurred: [CODE ' + error.code + ']');

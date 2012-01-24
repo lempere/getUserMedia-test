@@ -1,1 +1,1 @@
-Simple html to test getUserMedia in Opera 12 alpha browser
+Simple html to test getUserMedia in Opera 12 alpha browser and Google Chrome Canary 18 with these two flags activated --remote-debugging-port=92222 --enable-media-stream
